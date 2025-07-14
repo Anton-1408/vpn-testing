@@ -17,13 +17,13 @@
                     <key>kind</key>
                     <string>display-image</string>
                     <key>url</key>
-                    <string>https://yourserver.com/icon-57.png</string>
+                    <string>https://anton-1408.github.io/vpn-testing/icon-57.png</string>
                 </dict>
                 <dict>
                     <key>kind</key>
                     <string>full-size-image</string>
                     <key>url</key>
-                    <string>https://yourserver.com/icon-512.png</string>
+                    <string>https://anton-1408.github.io/vpn-testing/icon-512.png</string>
                 </dict>
             </array>
             <key>metadata</key>
