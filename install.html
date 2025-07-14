@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Установка WhoX</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .container {
+        background: white;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        max-width: 400px;
+        width: 100%;
+      }
+
+      .app-icon {
+        width: 80px;
+        height: 80px;
+        background: #007aff;
+        border-radius: 18px;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        color: white;
+        font-weight: bold;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .version {
+        color: #666;
+        margin-bottom: 30px;
+      }
+
+      .install-btn {
+        background: #007aff;
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 25px;
+        font-size: 18px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .install-btn:hover {
+        background: #0056b3;
+        transform: translateY(-2px);
+      }
+
+      .install-btn:active {
+        transform: translateY(0);
+      }
+
+      .warning {
+        background: #fff3cd;
+        color: #856404;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 20px 0;
+        font-size: 14px;
+      }
+
+      .steps {
+        text-align: left;
+        margin-top: 30px;
+      }
+
+      .step {
+        margin: 10px 0;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .step:before {
+        content: counter(step-counter);
+        counter-increment: step-counter;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: #007aff;
+        color: white;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      .steps {
+        counter-reset: step-counter;
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="app-icon">W</div>
+      <h1>WhoX</h1>
+      <div class="version">Версия 1.0 (Beta)</div>
+
+      <div class="warning">
+        ⚠️ Это тестовая версия приложения. Установка возможна только на
+        зарегистрированные устройства.
+      </div>
+
+      <a
+        href="itms-services://?action=download-manifest&url=https://yourserver.com/manifest.plist"
+        class="install-btn"
+      >
+        📱 Установить приложение
+      </a>
+
+      <div class="steps">
+        <h3>Инструкция по установке:</h3>
+        <div class="step">Нажмите кнопку "Установить приложение"</div>
+        <div class="step">Подтвердите установку во всплывающем окне</div>
+        <div class="step">Дождитесь завершения загрузки</div>
+        <div class="step">
+          Перейдите в Настройки → Основные → Управление устройством
+        </div>
+        <div class="step">Подтвердите доверие к разработчику</div>
+      </div>
+    </div>
+
+    <script>
+      // Проверка устройства
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      const isAndroid = /Android/.test(navigator.userAgent);
+
+      if (!isIOS) {
+        document.querySelector(".install-btn").style.display = "none";
+        document.querySelector(".warning").innerHTML =
+          "❌ Установка доступна только на устройствах iOS (iPhone/iPad)";
+        document.querySelector(".warning").style.background = "#f8d7da";
+        document.querySelector(".warning").style.color = "#721c24";
+      }
+
+      // Отслеживание кликов
+      document
+        .querySelector(".install-btn")
+        .addEventListener("click", function () {
+          console.log("Начата установка приложения");
+
+          // Показать дополнительные инструкции после клика
+          setTimeout(() => {
+            alert(
+              'После нажатия "Установить" в диалоге iOS приложение начнет загружаться. Проверьте рабочий стол.'
+            );
+          }, 500);
+        });
+    </script>
+  </body>
+</html>
